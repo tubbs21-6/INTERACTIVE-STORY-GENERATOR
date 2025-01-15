@@ -1,0 +1,205 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Story Generator</title>
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>Interactive Story Generator</h1>
+            <h2>Bring your stories to life in a matter of minutes!</h2>
+        </header>
+
+        <!-- Character Selection -->
+        <section id="character-selection">
+            <h3>Character Selection</h3>
+            <select id="character">
+                <option value="Robbie">Robbie (The Charming Hustler)</option>
+                <option value="Sandy">Sandy (The Manipulative Player)</option>
+                <option value="Zack">Zack (The Anxious Overthinker)</option>
+                <option value="Loco">Loco (The Smooth-talking Ladies’ Man)</option>
+                <option value="Brian">Brian (The Obsessed Watcher)</option>
+                <option value="Eric">Eric (Debo, The Protector-Bully)</option>
+                <option value="Cowboy">Cowboy (The Righteous Rebel)</option>
+                <option value="Randy">Randy (The Pessimist)</option>
+                <option value="Brea">Brea (The Klepto)</option>
+                <option value="Melissa">Melissa (The Certified Wild Child)</option>
+                <option value="Stephanie">Stephanie (The Co-Conspirator)</option>
+            </select>
+        </section>
+
+        <!-- Story Configuration -->
+        <section id="story-configuration">
+            <h3>Story Configuration</h3>
+            <label for="tone">Select Story Tone:</label>
+            <select id="tone">
+                <option value="sarcastic">Sarcastic</option>
+                <option value="cynical">Cynical</option>
+                <option value="playful">Playful</option>
+                <option value="serious">Serious</option>
+            </select>
+        </section>
+
+        <!-- Advanced Tone Adjustments -->
+               <h3>Advanced Adjustments</h3>
+            <div class="form-group">
+                <label for="humor-slider">Adjust Humor Level:</label>
+                <input type="range" id="humor-slider" min="0" max="100" value="50">
+                <span id="humor-value">50%</span>
+           
+        <!-- Theme Selection -->
+        <section id="themes">
+            <h3>Theme Selection</h3>
+            <label for="themes">Select Character Themes:</label>
+            <select id="themes" multiple>
+                <option value="Resilience in Adversity">Resilience in Adversity</option>
+                <option value="Humility and Hard Work">Humility and Hard Work</option>
+                <option value="The Power of Relationships">The Power of Relationships</option>
+                <option value="Authenticity Matters">Authenticity Matters</option>
+                <option value="The Importance of a Positive Mindset">The Importance of a Positive Mindset</option>
+                <option value="Learning from Mistakes">Learning from Mistakes</option>
+                <option value="Kindness as Strength">Kindness as Strength</option>
+                <option value="Balancing Fun and Responsibility">Balancing Fun and Responsibility</option>
+                <option value="Justice">Justice</option>
+            </select>
+        </section>
+
+        <!-- Character Details -->
+        <section id="character-details">
+            <h3>Character Details</h3>
+            <label for="backstory">Select Character Backstory:</label>
+            <select id="backstory">
+                <option value="Tragic past">Tragic past</option>
+                <option value="Privileged upbringing">Privileged upbringing</option>
+                <option value="Hidden talent">Hidden talent</option>
+                <option value="Secret identity">Secret identity</option>
+            </select>
+            <label for="quirks">Select Personality Quirks:</label>
+            <select id="quirks">
+                <option value="Overly sarcastic">Overly sarcastic</option>
+                <option value="Hopeless romantic">Hopeless romantic</option>
+                <option value="Incessant chatterbox">Incessant chatterbox</option>
+                <option value="Deep thinker">Deep thinker</option>
+            </select>
+            <label for="length">Select Story Length (in words):</label>
+            <select id="length">
+                <option value="1000">1000</option>
+                <option value="2000">2000</option>
+                <option value="3000">3000</option>
+                <option value="4000">4000</option>
+            </select>
+        </section>
+
+        <!-- Custom Character Creation -->
+        <section id="custom-character">
+            <h3>Create Custom Character</h3>
+            <div class="form-group">
+                <label for="custom-name">Character Name:</label>
+                <input type="text" id="custom-name" placeholder="Enter custom character name">
+            </div>
+            <div class="form-group">
+                <label for="custom-traits">Character Traits:</label>
+                <textarea id="custom-traits" rows="3" placeholder="Describe the character's traits..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="custom-backstory">Character Backstory:</label>
+                <textarea id="custom-backstory" rows="5" placeholder="Write a brief backstory..."></textarea>
+            </div>
+            <button id="save-custom-character">Save Character</button>
+        </section>
+
+        <!-- Save and Resume -->
+        <section id="save-and-resume">
+            <h3>Save and Resume</h3>
+            <button id="save-selections">Save Preferences</button>
+            <button id="resume-selections">Resume Preferences</button>
+        </section>
+
+        <!-- Export Options -->
+        <section id="export-options">
+            <h3>Export Options</h3>
+            <button id="export-pdf">Download as PDF</button>
+            <button id="export-word">Download as Word</button>
+            <button id="export-epub">Download as ePub</button>
+        </section>
+
+        <!-- Gamification Features -->
+        <section id="gamification">
+            <h3>Story Challenges and Achievements</h3>
+            <p>Complete challenges and track your progress!</p>
+            <div id="achievements">
+                <p>Achievements will appear here...</p>
+            </div>
+        </section>
+
+        <!-- Community Sharing -->
+        <section id="community-sharing">
+            <h3>Community Sharing</h3>
+            <button id="upload-story">Upload Story</button>
+            <button id="view-community">View Community Stories</button>
+        </section>
+
+        <!-- Advanced Story Generation -->
+        <section id="advanced-features">
+            <h3>Advanced Features</h3>
+            <p>Enhance your story with dynamic AI-driven elements!</p>
+            <button id="generate-ai-story">Generate with AI</button>
+            <p>Define relationships to influence outcomes:</p>
+            <textarea id="relationships" rows="5" placeholder="Describe relationships between characters..."></textarea>
+        </section>
+
+        <!-- Multilingual Support -->
+        <section id="language-options">
+            <h3>Language Options</h3>
+            <label for="language">Select Language:</label>
+            <select id="language">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="zh">Chinese</option>
+            </select>
+        </section>
+
+        <!-- Analytics and Tutorials -->
+        <section id="analytics">
+            <h3>Writing Insights</h3>
+            <button id="analyze-story">Analyze Story</button>
+            <div id="analysis-results">
+                <p>Insights will appear here...</p>
+            </div>
+        </section>
+
+        <section id="story-variations">
+            <h3>Story Variations</h3>
+            <button id="suggest-alternatives">Suggest Alternate Endings</button>
+            <div id="alternatives">
+                <p>Suggested plot variations will appear here...</p>
+            </div>
+        </section>
+
+        <section id="interactive-tutorials">
+            <h3>Interactive Tutorials</h3>
+            <button id="start-tutorial">Start Onboarding Tutorial</button>
+        </section>
+
+        <!-- Preview and Output -->
+        <section id="preview-output">
+            <h3>Preview</h3>
+            <div id="preview">Live Preview will appear here as you make selections...</div>
+            <h3>Generated Story</h3>
+            <div id="output">Generated story will appear here...</div>
+        </section>
+    </div>
+</body>
+</html>
+
+
+
