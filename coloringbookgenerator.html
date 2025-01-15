@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coloring Book Generator</title>
+    <style>
+        :root {
+            --neon-purple: #b026ff;
+            --neon-blue: #00f7ff;
+            --neon-red: #ff003c;
+            --neon-yellow: #fff700;
+            --neon-green: #39ff14;
+            --dark-bg: #0a0a0a;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            background: var(--dark-bg);
+            background-image: repeating-linear-gradient(
+                45deg,
+                #0a0a0a 0%,
+                #111 2%,
+                #0a0a0a 3%
+            );
+            font-family: 'BlinkMacSystemFont', -apple-system, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h1, h2, h3 {
+            color: #fff;
+            text-shadow: 0 0 10px var(--neon-blue),
+                         0 0 20px var(--neon-blue);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue); }
+            to { text-shadow: 0 0 20px var(--neon-purple), 0 0 30px var(--neon-purple); }
+        }
+
+        section {
+            background: rgba(10, 10, 10, 0.8);
+            border: 2px solid var(--neon-purple);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        section:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--neon-blue);
+        }
+
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--neon-blue);
+            border-radius: 4px;
+            color: #fff;
+            margin-top: 0.5rem;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        button {
+            background: transparent;
+            border: 2px solid var(--neon-purple);
+            color: var(--neon-purple);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        button:hover {
+            background: rgba(176, 38, 255, 0.1);
+            color: var(--neon-blue);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .preview-area {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+            min-height: 300px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--neon-green);
+            border-radius: 4px;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--neon-blue);
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: var(--neon-purple);
+            background: rgba(176, 38, 255, 0.1);
+        }
+
+        .slider-container {
+            margin: 1rem 0;
+        }
+
+        .slider-value {
+            color: var(--neon-blue);
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Coloring Book Generator</h1>
+            <h2>Transform your ideas into beautiful coloring pages!</h2>
+        </header>
+
+        <section id="input-section">
+            <h3>Create Your Image</h3>
+            <div class="input-group">
+                <label for="keywords">Keywords or Description</label>
+                <textarea id="keywords" rows="3" placeholder="Enter keywords or describe your image (e.g., 'magical dragon in enchanted forest with castle')"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label for="upload">Or Upload a Reference Sketch</label>
+                <div class="upload-area" id="upload">
+                    <p>Drop your sketch here or click to upload</p>
+                    <input type="file" hidden>
+                </div>
+            </div>
+        </section>
+
+        <section id="style-configuration">
+            <h3>Style Settings</h3>
+            <div class="input-group">
+                <label for="style">Art Style</label>
+                <select id="style">
+                    <option value="realistic">Realistic</option>
+                    <option value="cartoon">Cartoon</option>
+                    <option value="anime">Anime</option>
+                    <option value="abstract">Abstract</option>
+                    <option value="geometric">Geometric</option>
+                </select>
+            </div>
+
+            <div class="slider-container">
+                <label for="complexity">Line Complexity</label>
+                <input type="range" id="complexity" min="1" max="100" value="50">
+                <span class="slider-value">50%</span>
+            </div>
+
+            <div class="slider-container">
+                <label for="thickness">Line Thickness</label>
+                <input type="range" id="thickness" min="1" max="100" value="50">
+                <span class="slider-value">50%</span>
+            </div>
+
+            <div class="slider-container">
+                <label for="detail">Detail Level</label>
+                <input type="range" id="detail" min="1" max="100" value="50">
+                <span class="slider-value">50%</span>
+            </div>
+        </section>
+
+        <section id="patterns">
+            <h3>Pattern Settings</h3>
+            <div class="input-group">
+                <label>Pattern Style</label>
+                <select id="pattern-style">
+                    <option value="none">No Patterns</option>
+                    <option value="geometric">Geometric</option>
+                    <option value="floral">Floral</option>
+                    <option value="abstract">Abstract</option>
+                    <option value="textural">Textural</option>
+                </select>
+            </div>
+
+            <div class="slider-container">
+                <label for="pattern-density">Pattern Density</label>
+                <input type="range" id="pattern-density" min="1" max="100" value="30">
+                <span class="slider-value">30%</span>
+            </div>
+        </section>
+
+        <section id="output-settings">
+            <h3>Output Settings</h3>
+            <div class="input-group">
+                <label for="image-count">Number of Images</label>
+                <select id="image-count">
+                    <option value="1">1 Image</option>
+                    <option value="4">4 Images</option>
+                    <option value="9">9 Images</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="size">Page Size</label>
+                <select id="size">
+                    <option value="letter">Letter (8.5" x 11")</option>
+                    <option value="a4">A4</option>
+                    <option value="square">Square</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="preview">
+            <h3>Preview</h3>
+            <div class="preview-area">
+                <!-- Generated images will appear here -->
+                <p>Your generated coloring pages will appear here...</p>
+            </div>
+        </section>
+
+        <section id="actions">
+            <button id="generate">Generate Images</button>
+            <button id="download-all">Download All</button>
+            <button id="share">Share</button>
+        </section>
+    </div>
+
+    <script>
+        // Add interactivity for sliders
+        document.querySelectorAll('input[type="range"]').forEach(slider => {
+            const valueDisplay = slider.nextElementSibling;
+            slider.addEventListener('input', (e) => {
+                valueDisplay.textContent = `${e.target.value}%`;
+            });
+        });
+
+        // File upload handling
+        const uploadArea = document.querySelector('.upload-area');
+        uploadArea.addEventListener('click', () => {
+            uploadArea.querySelector('input[type="file"]').click();
+        });
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = var(--neon-blue);
+        });
+
+        // Generate button effect
+        const generateBtn = document.getElementById('generate');
+        generateBtn.addEventListener('click', () => {
+            // Add loading state and AI processing simulation
+            generateBtn.textContent = 'Generating...';
+            setTimeout(() => {
+                generateBtn.textContent = 'Generate Images';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
